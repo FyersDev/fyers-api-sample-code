@@ -1,8 +1,8 @@
 const fyers = require("fyers-api")
 const opn = require("opn")
 
-let app_id = "0QOVNXZ2HE"
-let app_secret = "LOOIBMX49G"
+let app_id = "XXXX"
+let app_secret = "XXXX"
 
 let reqBody = {"app_id":app_id, "secret_key":app_secret}
 let result = fyers.auth(reqBody)
