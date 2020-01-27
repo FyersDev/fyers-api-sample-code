@@ -9,6 +9,7 @@ This is the sample code to get started with the fyers trading apis.
 - Once that is done, it will redirect to a url (added while app creation) with the access_token. The url will look like
  >http://localhost:5000?access_token=gAAAAABc3Sh9QpE5mNx2mSz6vvvT29SAsELqkfbKQKa2977zHw3NdPBhe6jAZCBumHvYUum87j53-AzMEPXMjQw31wkRviZ1TdM5Oi=&user_id=FZXXXX
 - You have to take the access_token from the url and use that token in your going forward.
+  
   **Install "opn" module as well to run the node code**
 
 ## apiCalls
