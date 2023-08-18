@@ -5,7 +5,7 @@ const axios = require("axios");
 
 // Constants
 const BASE_URL = "https://api-t2.fyers.in/vagator/v2";
-const BASE_URL_2 = "https://api.fyers.in/api/v2";
+const BASE_URL_2 = "https://api-t1.fyers.in/api/v3";
 const URL_SEND_LOGIN_OTP = BASE_URL + "/send_login_otp";
 const URL_VERIFY_TOTP = BASE_URL + "/verify_otp";
 const URL_VERIFY_PIN = BASE_URL + "/verify_pin";

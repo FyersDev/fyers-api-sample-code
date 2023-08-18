@@ -16,7 +16,7 @@ APP_ID_HASH = "47afe2xxxxxxxxxxxxxxxxxxxx7d8d3fcdb7e8a1169c9"  # SHA-256 hash of
 
 # API endpoints
 BASE_URL = "https://api-t2.fyers.in/vagator/v2"
-BASE_URL_2 = "https://api.fyers.in/api/v2"
+BASE_URL_2 = "https://api-t1.fyers.in/api/v3"
 URL_SEND_LOGIN_OTP = BASE_URL + "/send_login_otp"
 URL_VERIFY_TOTP = BASE_URL + "/verify_otp"
 URL_VERIFY_PIN = BASE_URL + "/verify_pin"
