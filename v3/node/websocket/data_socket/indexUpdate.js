@@ -1,6 +1,6 @@
 const DataSocket = require("fyers-api-v3").fyersDataSocket
 
-var skt= DataSocket.getInstance("","path/where/logs/to/be/saved")
+var skt= DataSocket.getInstance("accesstoken","path/where/logs/to/be/saved")
 
 skt.on("connect",function(){
 skt.subscribe(['NSE:NIFTYMIDSELECT-INDEX',"NSE:NIFTYHEALTHCARE-INDEX"])
