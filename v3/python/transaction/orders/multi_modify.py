@@ -7,13 +7,13 @@ fyers = fyersModel.FyersModel(client_id=client_id, token=access_token,is_async=F
 
 
 data = [{
-  "id": 8102710298291,
+  "id": "8102710298291",
   "type": 1,
   "limitPrice": 61049,
   "qty": 1
 },
 {
-  "id": 8102710298292,
+  "id": "8102710298292",
   "type": 1,
   "limitPrice": 61049,
   "qty": 1

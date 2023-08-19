@@ -1,10 +1,10 @@
 moduleName = "getAccessToken"
 """
-    1.We need to first install fyers-apiv2(can be installed as 'pip install fyers-apiv2)
+    1.We need to first install fyers-apiv3(can be installed as 'pip install fyers-apiv3)
     2.We then need to import accesToken module from fyers_api directory(as done below)
     3.We also need to import webbrowser to preform an action while generating authcode
 """
-from fyers_api import fyersModel
+from fyers_apiv3 import fyersModel
 import webbrowser
 
 
