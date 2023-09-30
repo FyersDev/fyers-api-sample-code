@@ -61,7 +61,10 @@ fyerModel object takes following values as arguments
 1. accessToken : this is the one which you received from above 
 2. client_id : this is basically the app_id for the particular app you logged into
 """
-fyers = fyersModel.FyersModel(token=access_token,is_async=False,client_id=client_id,log_path="/home/downloads/")
+# Action: Replace the log path here
+log_path = "C:/Projects/Fyers API App/fyers-api-sample-code/My API Sample Script(GET STARTED)/logs"
+
+fyers = fyersModel.FyersModel(token=access_token,is_async=False,client_id=client_id,log_path=log_path)
 
 
 ### After this point you can call the relevant apis and get started with
@@ -135,13 +138,13 @@ data = [{ "symbol":"NSE:SBIN-EQ",
   "takeProfit":0
 },
 {
-  "symbol":"NSE:HDFC-EQ",
+  "symbol":"NSE:HDFCBANK-EQ",
   "qty":1,
   "type":2,  
   "side":1, 
   "productType":"INTRADAY",   
   "limitPrice":0,
-  "stopPrice":0 ,
+  "stopPrice":0,
   "disclosedQty":0, 
   "validity":"DAY", 
   "offlineOrder":"False", 
@@ -231,7 +234,7 @@ DATA APIS : This includes following Apis(History,Quotes,MarketDepth)
 
 ## Historical Data 
 
-data = {"symbol":"NSE:SBIN-EQ","resolution":"D","date_format":"0","range_from":"1622097600","range_to":"1622097685","cont_flag":"1"}
+data = {"symbol":"NSE:HDFCBANK-EQ","resolution":"D","date_format":"0","range_from":"1695843000","range_to":"1696012140","cont_flag":"1"}
 
 print(fyers.history(data))
 
