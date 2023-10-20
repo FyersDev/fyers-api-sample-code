@@ -1,0 +1,2111 @@
+{
+	"info": {
+		"_postman_id": "5edc3d4e-b012-4b20-9f45-d9931201985b",
+		"name": "FYERS API V3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24894415"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "OIDC - Auth Flow",
+					"item": [
+						{
+							"name": "generate-authcode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state&scope=openid&nonce=sample_nonce",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"generate-authcode"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "sample_client_id",
+											"description": "This is your application id"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "sample_redirect_uri",
+											"description": "The redirect uri should be the exact same as what was provided at the time of app creation"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "state",
+											"value": "sample_state",
+											"description": "This will be sent back to you in the redirect URL"
+										},
+										{
+											"key": "scope",
+											"value": "openid"
+										},
+										{
+											"key": "nonce",
+											"value": "sample_nonce",
+											"description": "This will be included in the id_token which is received at the end of step 2"
+										}
+									]
+								},
+								"description": "## Step 1\r\n\r\nYou need to redirect the user to the login page with all the necessary query parameters."
+							},
+							"response": []
+						},
+						{
+							"name": "validate_auth_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"grant_type\":\"authorization_code\",  \n    \"appIdHash\":\"{{appId_hash}}\",\n    \"code\": \"{{auth_code}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"validate-authcode"
+									]
+								},
+								"description": "## Step 2\r\n\r\n- code\r\n    - You will be required to take the authentication code received in the first request and send it to the backend server in this request. \r\n\r\n- appIdHash\r\n    - This needs to be created at your end with the application id and the secret key\r\n    - You will need to send the SHA256 hash of appId:secretKey\r\n    - Eg: appId = abcd1234-100 and secretKey = qwerty6789\r\n    - Create a string variable abcd1234-100:qwerty6789\r\n    - Create a SHA256 hash of the newly created string\r\n    - You can use this only tool to create a SHA256 string while testing:  https://emn178.github.io/online-tools/sha256.html"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OIDC - PKCE Flow",
+					"item": [
+						{
+							"name": "generate-authcode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&scope=openid&nonce=sample_nonce",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"generate-authcode"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "sample_client_id",
+											"description": "This is your application id"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "sample_redirect_uri",
+											"description": "The redirect uri should be the exact same as what was provided at the time of app creation"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "code_challenge",
+											"value": "sample_code_challenge",
+											"description": "This is a SHA256 hash of the code_verifier which you have created at your end"
+										},
+										{
+											"key": "state",
+											"value": "sample_state",
+											"description": "This will be sent back to you in the redirect URL"
+										},
+										{
+											"key": "scope",
+											"value": "openid"
+										},
+										{
+											"key": "nonce",
+											"value": "sample_nonce",
+											"description": "This will be included in the id_token which is received at the end of step 2"
+										}
+									]
+								},
+								"description": "# Step 1\r\nThe PKCE flow is used for Single Page Application (SPA) / Mobile Apps wherein storing the secret key is unsafe. For such applications. \r\n\r\n## Parameters\r\n- You will be required to create a random string within your front end application called code_verifier\r\n- The code_challenge is the SHA256 hash of the code_verifier. \r\n    - You can use this only tool to create a SHA256 string while testing: https://emn178.github.io/online-tools/sha256.html\r\n- You will also be required to create a unique string within your front end application called nonce. You will receive the nonce in the id_token at the end of step 2"
+							},
+							"response": []
+						},
+						{
+							"name": "validate_auth_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"grant_type\":\"authorization_code\",  \n    \"code_verifier\":\"sample_code_challenge\",\n    \"code\":\"{{auth_code}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"validate-authcode"
+									]
+								},
+								"description": "## Step 2\r\n- code - This is the Authrorization code which is received in step 1\r\n- code_verifier - This is the random string which was created in step 1"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OAuth2 - Auth Flow",
+					"item": [
+						{
+							"name": "generate-authcode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"generate-authcode"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "sample_client_id",
+											"description": "This is your application id"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "sample_redirect_uri",
+											"description": "The redirect uri should be the exact same as what was provided at the time of app creation"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "state",
+											"value": "sample_state",
+											"description": "This will be sent back to you in the redirect URL"
+										}
+									]
+								},
+								"description": "## Step 1\r\n\r\nYou need to redirect the user to the login page with all the necessary query parameters."
+							},
+							"response": []
+						},
+						{
+							"name": "validate_auth_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"grant_type\":\"authorization_code\",  \n    \"appIdHash\":\"{{appId_hash}}\",\n    \"code\":\"{{auth_code}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"validate-authcode"
+									]
+								},
+								"description": "## Step 2\r\n\r\n- code\r\n    - You will be required to take the authentication code received in the first request and send it to the backend server in this request.\r\n\r\n- appIdHash\r\n    - This needs to be created at your end with the application id and the secret key\r\n    - You will need to send the SHA256 hash of appId:secretKey\r\n    - Eg: appId = abcd1234-100 and secretKey = qwerty6789\r\n    - Create a string variable abcd1234-100:qwerty6789\r\n    - Create a SHA256 hash of the newly created string\r\n    - You can use this only tool to create a SHA256 string while testing: https://emn178.github.io/online-tools/sha256.html"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OAuth2 - PKCE Flow",
+					"item": [
+						{
+							"name": "generate-authcode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&nonce=sample_nonce&scope=openid",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"generate-authcode"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "sample_client_id",
+											"description": "This is your application id"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "sample_redirect_uri",
+											"description": "The redirect uri should be the exact same as what was provided at the time of app creation"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "code_challenge",
+											"value": "sample_code_challenge",
+											"description": "This is a SHA256 hash of the code_verifier which you have created at your end"
+										},
+										{
+											"key": "state",
+											"value": "sample_state",
+											"description": "This will be sent back to you in the redirect URL"
+										},
+										{
+											"key": "nonce",
+											"value": "sample_nonce",
+											"description": "This will be included in the id_token which is received at the end of step 2"
+										},
+										{
+											"key": "scope",
+											"value": "openid"
+										}
+									]
+								},
+								"description": "# Step 1\r\nThe PKCE flow is used for Single Page Application (SPA) / Mobile Apps wherein storing the secret key is unsafe. For such applications. \r\n\r\n## Parameters\r\n- You will be required to create a random string within your front end application called code_verifier\r\n- The code_challenge is the SHA256 hash of the code_verifier. \r\n    - You can use this only tool to create a SHA256 string while testing: https://emn178.github.io/online-tools/sha256.html\r\n- You will also be required to create a unique string within your front end application called nonce. You will receive the nonce in the id_token at the end of step 2"
+							},
+							"response": []
+						},
+						{
+							"name": "validate_auth_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"grant_type\":\"authorization_code\",  \n    \"code_verifier\":\"sample_code_challenge\",\n    \"code\":\"{{auth_code}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"validate-authcode"
+									]
+								},
+								"description": "## Step 2\r\n- code - This is the Authrorization code which is received in step 1\r\n- code_verifier - This is the random string which was created in step 1"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Account Info",
+			"item": [
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/profile",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funds",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{appId}}:{{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/funds",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"funds"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions Info",
+			"item": [
+				{
+					"name": "Tradebook",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/tradebook",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"tradebook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Holdings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/holdings",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"holdings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Position",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/positions",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/orders",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Orders with FIlter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/api/v3/orders?id=230XXXXXXX4267",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v3",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "230XXXXXXX4267"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Intraday/Margin/CNC Orders",
+							"item": [
+								{
+									"name": "Place Order-Limit",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:IDEA-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"INTRADAY\",\n\t\"limitPrice\":7.9,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":false,\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-Market",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":2,\n\t\"side\":1,\n\t\"productType\":\"CNC\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":true,\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-Stop",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"MCX:SILVERMIC20NOVFUT\",\n\t\"qty\":1,\n\t\"type\":3,\n\t\"side\":1,\n\t\"productType\":\"MARGIN\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":70000,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-StopLimit",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"MCX:SILVERMIC20NOVFUT\",\n\t\"qty\":1,\n\t\"type\":4,\n\t\"side\":1,\n\t\"productType\":\"MARGIN\",\n\t\"limitPrice\":64200,\n\t\"stopPrice\":64201,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order-Limit",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"52009117318\", \n    \"type\":1, \n    \"limitPrice\": 200,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order-Market",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"52009117318\", \n    \"type\":2, \n    \"limitPrice\": 0,\n    \"qty\":1\n    \n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order- QTY",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"52009117318\", \n    \"type\":2, \n    \"qty\":4\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Order",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"id\":\"52009117318\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "CO Orders",
+							"item": [
+								{
+									"name": "Place Order - Limit",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"CO\",\n\t\"limitPrice\":200,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":false,\n\t\"stopLoss\":199,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order -Market",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":2,\n\t\"side\":1,\n\t\"productType\":\"CO\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":198,\n\t\"takeProfit\":0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order - Leg 1",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"808278287301-CO-1\", \n    \"type\":1, \n    \"limitPrice\": 202,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order - Leg 2",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"808278287301-CO-2\", \n    \"type\":3, \n    \"stopPrice\": 199,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Order",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"id\":\"808268324981-CO-1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders",
+											"protocol": "https",
+											"host": [
+												"api",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v2",
+												"orders"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "BO Orders",
+							"item": [
+								{
+									"name": "Place Order-Limit",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"BO\",\n\t\"limitPrice\":200,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":5,\n\t\"takeProfit\":5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-Market",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":2,\n\t\"side\":1,\n\t\"productType\":\"BO\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":5,\n\t\"takeProfit\":5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-Stop",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":3,\n\t\"side\":1,\n\t\"productType\":\"BO\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":205,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":5,\n\t\"takeProfit\":5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Place Order-Stop Limit",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":4,\n\t\"side\":1,\n\t\"productType\":\"BO\",\n\t\"limitPrice\":205,\n\t\"stopPrice\":206,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":5,\n\t\"takeProfit\":5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order - Leg 1",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"808278287301-BO-1\", \n    \"type\":1, \n    \"limitPrice\": 200,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order - Leg 2",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"808278287301-BO-2\", \n    \"type\":3, \n    \"stopPrice\": 195,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Order - Leg 3",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\":\"808278287301-BO-3\", \n    \"type\":1, \n    \"limitPrice\": 210,\n    \"qty\":1\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Order",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "{{appId}}:{{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"id\":\"808268324981-BO-1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"orders",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Multiple Orders",
+							"item": [
+								{
+									"name": "Place Multiple Order",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{appId}}:{{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\"symbol\":\"NSE:SBIN-EQ\",\"qty\":1,\"type\":1,\"side\":1,\"productType\":\"INTRADAY\",\"limitPrice\":190,\"stopPrice\":0,\"disclosedQty\":0,\"validity\":\"DAY\",\"offlineOrder\":\"True\",\"stopLoss\":0,\"takeProfit\":0},\n\n    {\"symbol\":\"NSE:SBIN-EQ\",\"qty\":1,\"type\":2,\"side\":1,\"productType\":\"CNC\",\"limitPrice\":0,\"stopPrice\":0,\"disclosedQty\":0,\"validity\":\"DAY\",\"offlineOrder\":\"True\",\"stopLoss\":0,\"takeProfit\":0}\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"multi-order",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modify Multiple Order",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{appId}}:{{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\"id\":\"52009117324\", \"type\":1, \"limitPrice\": 196, \"offlineOrder\":\"True\"},\n    {\"id\":\"52009117325\", \"type\":1, \"limitPrice\": 196, \"offlineOrder\":\"True\"}\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"multi-order",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Multiple Order",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{appId}}:{{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\"id\":\"52009117324\"},\n    {\"id\":\"52009117325\"}\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
+											"protocol": "https",
+											"host": [
+												"api-t1",
+												"fyers",
+												"in"
+											],
+											"path": [
+												"api",
+												"v3",
+												"multi-order",
+												"sync"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Position",
+					"item": [
+						{
+							"name": "Convert_position",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{appId}}:{{access_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"positionSide\":1,\n\t\"convertQty\":1,\n\t\"convertFrom\":\"INTRADAY\",\n\t\"convertTo\":\"CNC\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"positions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exit_position",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{appId}}:{{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\": \"NSE:SBIN-EQ-INTRADAY\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"positions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exit_all_positions",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{appId}}:{{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"exit_all\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
+									"protocol": "https",
+									"host": [
+										"api-t1",
+										"fyers",
+										"in"
+									],
+									"path": [
+										"api",
+										"v3",
+										"positions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Broker Info",
+			"item": [
+				{
+					"name": "Market Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/data/marketStatus",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"data",
+								"marketStatus"
+							]
+						},
+						"description": "## Key Meanings\r\n\r\n- EMM_EXM_EXCH_ID\r\n    - NSE\r\n    - BSE\r\n    - MCX\r\n\r\n- EMM_EXCH_SEG\r\n    - E => Equity\r\n    - D = > Derivatives\r\n    - C => Currency\r\n    - M => Commodity\r\n\r\n- MARKET_TYPE\r\n    - NL - Normal Market\r\n    - MS - Morning Session\r\n    - ES - Evening Session\r\n\r\n- EMM_STATUS\r\n    - CLOSE\r\n    - OPEN"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Market Data",
+			"item": [
+				{
+					"name": "Quotes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/data/quotes/?symbols=NSE:SBIN-EQ",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"data",
+								"quotes",
+								""
+							],
+							"query": [
+								{
+									"key": "symbols",
+									"value": "NSE:SBIN-EQ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Market Depth",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/data/depth/?symbol=NSE:SBIN-EQ&ohlcv_flag=1",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"data",
+								"depth",
+								""
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "NSE:SBIN-EQ"
+								},
+								{
+									"key": "ohlcv_flag",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Market Depth will give you the best 5 bids and asks. If you want only the bids and asks, then you can pass ohlcvFlag = 0"
+					},
+					"response": []
+				},
+				{
+					"name": "Historical Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-t1.fyers.in/data/history?symbol=NSE:SBIN-EQ&resolution=30&date_format=1&range_from=2021-01-01&range_to=2021-01-02&cont_flag=1",
+							"protocol": "https",
+							"host": [
+								"api-t1",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"data",
+								"history"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "NSE:SBIN-EQ"
+								},
+								{
+									"key": "resolution",
+									"value": "30"
+								},
+								{
+									"key": "date_format",
+									"value": "1"
+								},
+								{
+									"key": "range_from",
+									"value": "2021-01-01"
+								},
+								{
+									"key": "range_to",
+									"value": "2021-01-02"
+								},
+								{
+									"key": "cont_flag",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edis",
+			"item": [
+				{
+					"name": "Tpin Generation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fyers.in/api/v2/tpin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v2",
+								"tpin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fyers.in/api/v2/details",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v2",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"recordLst\": [{\"isin_code\": \"INE313D01013\", \"qty\": 1}]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.fyers.in/api/v2/index",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v2",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inquiry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{appId}}:{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"transactionId\": \"915484108176\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.fyers.in/api/v2/inquiry",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fyers",
+								"in"
+							],
+							"path": [
+								"api",
+								"v2",
+								"inquiry"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "appId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

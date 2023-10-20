@@ -1,0 +1,49 @@
+Code,Error Message,Error Description
+,,
+-209,Please provide a valid order number,This error code and error message specifies that the order_id passed is either incorrect or not a valid one for the particular order
+-101,Please provide a valid order type,This error code and error message specifes that the Type provided for the particular order is not a valid Type 
+-305,Only market and limit orders are allowed,This error code and error message specifies that for CO orders only market and limit orders are allowed 
+-323,Only market and limit orders are allowed,This error code and error message specifies that for BO orders only market and limit orders are allowed 
+-308,Please provide a valid limitPrice,This error code and error message specifies that a valid LimitPrice value needs to be passed for the particular symbol
+-309,Please provide a valid stop price,This error code and error message specifies that a valid stopPrice value needs to be passed for the particular symbol
+-310,Please provide a valid order quantity,This error code and error message specifies that the order Qty provided for the symbol is incorrect and need to provide a proper Qty
+-311,Please provide a valid stop loss price,This error code and error message specifies that the Stoploss price provided is incorrect for the specified symbol
+-313,Please provide a valid order side of either buy or sell,This error code and error message specifies that a valid side either (buy/sell) wasn't send for the symbol
+-314,Please provide a valid product type for the order,This error code and error message specifies the Type(Intraday/CNC/Margin) of the symbol was incorrect
+-315,Please provide a valid price for stop limit order,This error code and error message specifies that the for the StopLimit order provide a valid stopPrice 
+-316,Please provide a valid stop loss price,This error code and errror message specifies that  for the CO and BO orders the stopLoss key Provided is Incorrect 
+-323,Please provide a valid stop loss value,This error code and error message specifies that the Stoploss provided is incorrect for the particular order
+-325,Please provide a valid target value,This error code and error message specifies that the takeProfit key being passed is incorrect or the value in  takeProfit key is inappropriate
+-326,Please provide a valid order validity,This error code and error message specifies that the Validity key value provided for the particular order is incorrect 
+-327,Please provide a valid order disclosed quantity,This error code and error message specifies the disclosed quantity passed for a particular value is incorrect 
+-328,Please provide a valid order offline flag,This error code and error message specifes that the offline order flag provided is incorrect it should be either true/false is being passed.
+,,
+,,
+-201,Connection error. Please try again,This error code and error message specifies that there was some connection issue while processing your request
+-202,Connection error. Please try again,This error code specifies that due to some cause the connection timed out. after some time make another request
+-204,Connection error. Please try again,This error code specifies due to some http error the request wasnt processed
+-205,Connection error. Please try again,This error code specifies due to some reason the market wasnt able to accept or process the request 
+,,
+,,
+-157,""" """,This error code specifies that the user doesnt exist 
+-159,Please provide a valid order number,This error code specifies that for the particular order_id provided there is no any orders in the orderbook
+-161,This order has already been cancelled,This error code specifies that the order for the particular order_id is already cancelled
+-162,This order has already traded,This error code specifies that the order for the particular order_id is already got traded.
+-163,"""""",This error code specifies that due to some reason the order modfication wasnt done successfully.
+-164,This order has already been rejected,This error code and error message specifies that the order for the particular symbol got rejecteed due to some reason.
+,,
+-390,Please provide a valid stop price,This error code and error message specfies that during order placement the stopPrice provided is invalid for the particular symbol
+-392,Price should be in multiples of tick size.,This error code and error message specifies that Price you are trading for the symbol doesnt match with the symbol tick size 
+-353,API Limit exceeded  (perSec/perMin/perDay),This error code specifies that the ratelimit for the Api is exceeded 
+-372,Please provide a valid price.,This error code and error message specifies that the Price provided during orderplacement is invalid 
+-397,Position quantity is zero,This error code and error message specifies that for the symbol the Position is already Zero.
+-398,Looks like you have no open positions.,This error code and error message specifies that the you dont have any open positions in your account.
+-399,No pending orders,This error code and error message specifies that you dont have any order which can be cancelled or you dont have any position to close the particular position 
+-329,We have processed exit positions request. Kindly check positions before taking further action.,This error code and error message specifies that we have made the request to the market to close position but the result havent been updated so for you confirmation we are asking you to check the posotions
+,,
+-373,please provide valid permission,This error code and error message specifies that for the particular Api request the app doesnt have the permission.
+-374,Please provide authorization code.,This error code and error message specifies that the auth_code passed is not a valid one you need to generate one to generate token
+-371,Please provide sha256 hash of appId and app secret,This error code and error message specifies that the app_id hash passed to generate the token is invaliad and you need to provide one with the sha256(app_id:secret_key) 
+,,
+,,
+-96,An unexpected error occurred. Please contact support.,This error code and error message occurs if there comes an issue while processing the request 

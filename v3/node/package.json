@@ -1,0 +1,16 @@
+{
+  "name": "sample_codes",
+  "version": "1.0.0",
+  "description": "sample codes for node_js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fyers-api-v3": "^1.0.0",
+    "opn": "^6.0.0",
+    "otplib": "^12.0.1"
+  }
+}
