@@ -202,7 +202,7 @@ def main():
     validate_authcode_result = validate_authcode(
         app_id_hash=APP_ID_HASH, auth_code=auth_code
     )
-    if token_result[0] != SUCCESS:
+    if validate_authcode_result[0] != SUCCESS:
         print(f"validate_authcode failure - {validate_authcode_result[1]}")
         sys.exit()
     else:
