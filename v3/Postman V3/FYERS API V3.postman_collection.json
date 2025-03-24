@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "44278865-819a-4daf-9d7a-5fbf0084b39c",
-		"name": "FYERS API V2",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "5edc3d4e-b012-4b20-9f45-d9931201985b",
+		"name": "FYERS API V3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24894415"
 	},
 	"item": [
 		{
@@ -17,16 +18,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state&scope=openid&nonce=sample_nonce",
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state&scope=openid&nonce=sample_nonce",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"generate-authcode"
 									],
 									"query": [
@@ -79,16 +80,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/validate-authcode",
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"validate-authcode"
 									]
 								},
@@ -107,16 +108,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&scope=openid&nonce=sample_nonce",
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&scope=openid&nonce=sample_nonce",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"generate-authcode"
 									],
 									"query": [
@@ -174,16 +175,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/validate-authcode",
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"validate-authcode"
 									]
 								},
@@ -202,16 +203,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state",
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&state=sample_state",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"generate-authcode"
 									],
 									"query": [
@@ -255,16 +256,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/validate-authcode",
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"validate-authcode"
 									]
 								},
@@ -283,16 +284,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&nonce=sample_nonce&scope=openid",
+									"raw": "https://api-t1.fyers.in/api/v3/generate-authcode?client_id=sample_client_id&redirect_uri=sample_redirect_uri&response_type=code&code_challenge=sample_code_challenge&state=sample_state&nonce=sample_nonce&scope=openid",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"generate-authcode"
 									],
 									"query": [
@@ -350,16 +351,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/validate-authcode",
+									"raw": "https://api-t1.fyers.in/api/v3/validate-authcode",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"validate-authcode"
 									]
 								},
@@ -386,16 +387,16 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/profile",
+							"raw": "https://api-t1.fyers.in/api/v3/profile",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"profile"
 							]
 						}
@@ -414,55 +415,19 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/funds",
+							"raw": "https://api-t1.fyers.in/api/v3/funds",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"funds"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Funds with filter",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"type": "text",
-								"value": "{{appId}}:{{access_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://api.fyers.in/api/v2/funds?id=10,9",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fyers",
-								"in"
-							],
-							"path": [
-								"api",
-								"v2",
-								"funds"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "10,9",
-									"description": "You can pass either 1 number of multiple numbers by comma seperated. Eg: 10,9,5"
-								}
-							]
-						},
-						"description": "The possible filter values are as follows:\r\n1 => \r\n2 => \r\n3 => \r\n4 => \r\n5 => \r\n6 => \r\n7 => \r\n8 => \r\n9 => \r\n10 =>"
 					},
 					"response": []
 				}
@@ -480,54 +445,25 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "{{appId}}:{{access_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://api.fyers.in/api/v2/tradebook",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fyers",
-								"in"
-							],
-							"path": [
-								"api",
-								"v2",
-								"tradebook"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Tradebook with filter",
-					"request": {
-						"method": "GET",
-						"header": [
+							},
 							{
-								"key": "Authorization",
-								"value": "{{appId}}:{{access_token}}",
+								"key": "version",
+								"value": "3",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/tradebook?id=sample_data",
+							"raw": "https://api-t1.fyers.in/api/v3/tradebook",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"tradebook"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "sample_data"
-								}
 							]
 						}
 					},
@@ -542,54 +478,25 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "{{appId}}:{{access_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://api.fyers.in/api/v2/holdings",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fyers",
-								"in"
-							],
-							"path": [
-								"api",
-								"v2",
-								"holdings"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Holdings with filter",
-					"request": {
-						"method": "GET",
-						"header": [
+							},
 							{
-								"key": "Authorization",
-								"value": "{{appId}}:{{access_token}}",
+								"key": "version",
+								"value": "3",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/holdings?symbol=sample_data",
+							"raw": "https://api-t1.fyers.in/api/v3/holdings",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"holdings"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "sample_data"
-								}
 							]
 						}
 					},
@@ -604,19 +511,24 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/positions",
+							"raw": "https://api-t1.fyers.in/api/v3/positions",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"positions"
 							]
 						}
@@ -632,19 +544,24 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "{{appId}}:{{access_token}}"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/orders",
+							"raw": "https://api-t1.fyers.in/api/v3/orders",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"orders"
 							]
 						}
@@ -660,25 +577,30 @@
 								"key": "Authorization",
 								"value": "{{appId}}:{{access_token}}",
 								"type": "text"
+							},
+							{
+								"key": "version",
+								"value": "3",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/orders?id=sample_data",
+							"raw": "https://api-t1.fyers.in/api/v3/orders?id=230XXXXXXX4267",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"orders"
 							],
 							"query": [
 								{
 									"key": "id",
-									"value": "sample_data"
+									"value": "230XXXXXXX4267"
 								}
 							]
 						}
@@ -714,7 +636,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n\t\"symbol\":\"MCX:SILVERMIC20NOVFUT\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"INTRADAY\",\n\t\"limitPrice\":64200,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"raw": "{\n\t\"symbol\":\"NSE:IDEA-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"INTRADAY\",\n\t\"limitPrice\":7.9,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":false,\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -722,17 +644,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -756,7 +679,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":2,\n\t\"side\":1,\n\t\"productType\":\"CNC\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"True\",\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":2,\n\t\"side\":1,\n\t\"productType\":\"CNC\",\n\t\"limitPrice\":0,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":true,\n\t\"stopLoss\":0,\n\t\"takeProfit\":0\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -764,17 +687,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -806,17 +730,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -848,17 +773,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -867,7 +793,7 @@
 								{
 									"name": "Modify Order-Limit",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -890,17 +816,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -909,7 +836,7 @@
 								{
 									"name": "Modify Order-Market",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -932,17 +859,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -951,7 +879,7 @@
 								{
 									"name": "Modify Order- QTY",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -974,17 +902,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1016,17 +945,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1055,7 +985,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"CO\",\n\t\"limitPrice\":200,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":\"False\",\n\t\"stopLoss\":199,\n\t\"takeProfit\":0\n}",
+											"raw": "{\n\t\"symbol\":\"NSE:SBIN-EQ\",\n\t\"qty\":1,\n\t\"type\":1,\n\t\"side\":1,\n\t\"productType\":\"CO\",\n\t\"limitPrice\":200,\n\t\"stopPrice\":0,\n\t\"disclosedQty\":0,\n\t\"validity\":\"DAY\",\n\t\"offlineOrder\":false,\n\t\"stopLoss\":199,\n\t\"takeProfit\":0\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1063,17 +993,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1105,17 +1036,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1124,7 +1056,7 @@
 								{
 									"name": "Modify Order - Leg 1",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1147,17 +1079,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1166,7 +1099,7 @@
 								{
 									"name": "Modify Order - Leg 2",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1189,17 +1122,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1231,7 +1165,7 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders",
 											"protocol": "https",
 											"host": [
 												"api",
@@ -1278,17 +1212,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1320,17 +1255,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1362,17 +1298,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1404,17 +1341,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1423,7 +1361,7 @@
 								{
 									"name": "Modify Order - Leg 1",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1446,17 +1384,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1465,7 +1404,7 @@
 								{
 									"name": "Modify Order - Leg 2",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1488,17 +1427,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1507,7 +1447,7 @@
 								{
 									"name": "Modify Order - Leg 3",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1530,17 +1470,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1572,17 +1513,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders",
+											"raw": "https://api-t1.fyers.in/api/v3/orders/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders"
+												"v3",
+												"orders",
+												"sync"
 											]
 										}
 									},
@@ -1614,17 +1556,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders-multi",
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders-multi"
+												"v3",
+												"multi-order",
+												"sync"
 											]
 										}
 									},
@@ -1633,7 +1576,7 @@
 								{
 									"name": "Modify Multiple Order",
 									"request": {
-										"method": "PUT",
+										"method": "PATCH",
 										"header": [
 											{
 												"key": "Authorization",
@@ -1651,17 +1594,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders-multi",
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders-multi"
+												"v3",
+												"multi-order",
+												"sync"
 											]
 										}
 									},
@@ -1688,51 +1632,18 @@
 											}
 										},
 										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders-multi",
+											"raw": "https://api-t1.fyers.in/api/v3/multi-order/sync",
 											"protocol": "https",
 											"host": [
-												"api",
+												"api-t1",
 												"fyers",
 												"in"
 											],
 											"path": [
 												"api",
-												"v2",
-												"orders-multi"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get Multiple Order",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "{{appId}}:{{access_token}}",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "https://api.fyers.in/api/v2/orders-multi?id=52009117325,52009117324",
-											"protocol": "https",
-											"host": [
-												"api",
-												"fyers",
-												"in"
-											],
-											"path": [
-												"api",
-												"v2",
-												"orders-multi"
-											],
-											"query": [
-												{
-													"key": "id",
-													"value": "52009117325,52009117324"
-												}
+												"v3",
+												"multi-order",
+												"sync"
 											]
 										}
 									},
@@ -1771,16 +1682,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/positions",
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"positions"
 									]
 								}
@@ -1808,16 +1719,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/positions",
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"positions"
 									]
 								}
@@ -1837,7 +1748,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{}",
+									"raw": "{\n    \"exit_all\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1845,16 +1756,16 @@
 									}
 								},
 								"url": {
-									"raw": "https://api.fyers.in/api/v2/positions",
+									"raw": "https://api-t1.fyers.in/api/v3/positions",
 									"protocol": "https",
 									"host": [
-										"api",
+										"api-t1",
 										"fyers",
 										"in"
 									],
 									"path": [
 										"api",
-										"v2",
+										"v3",
 										"positions"
 									]
 								}
@@ -1880,17 +1791,16 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/api/v2/market-status",
+							"raw": "https://api-t1.fyers.in/data/marketStatus",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
-								"api",
-								"v2",
-								"market-status"
+								"data",
+								"marketStatus"
 							]
 						},
 						"description": "## Key Meanings\r\n\r\n- EMM_EXM_EXCH_ID\r\n    - NSE\r\n    - BSE\r\n    - MCX\r\n\r\n- EMM_EXCH_SEG\r\n    - E => Equity\r\n    - D = > Derivatives\r\n    - C => Currency\r\n    - M => Commodity\r\n\r\n- MARKET_TYPE\r\n    - NL - Normal Market\r\n    - MS - Morning Session\r\n    - ES - Evening Session\r\n\r\n- EMM_STATUS\r\n    - CLOSE\r\n    - OPEN"
@@ -1914,16 +1824,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/data-rest/v2/quotes/?symbols=NSE:SBIN-EQ",
+							"raw": "https://api-t1.fyers.in/data/quotes/?symbols=NSE:SBIN-EQ",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
-								"data-rest",
-								"v2",
+								"data",
 								"quotes",
 								""
 							],
@@ -1949,16 +1858,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/data-rest/v2/depth/?symbol=NSE:SBIN-EQ&ohlcv_flag=1",
+							"raw": "https://api-t1.fyers.in/data/depth/?symbol=NSE:SBIN-EQ&ohlcv_flag=1",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
-								"data-rest",
-								"v2",
+								"data",
 								"depth",
 								""
 							],
@@ -1989,18 +1897,16 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fyers.in/data-rest/v2/history/?symbol=NSE:SBIN-EQ&resolution=30&date_format=1&range_from=2021-01-01&range_to=2021-01-02&cont_flag=1",
+							"raw": "https://api-t1.fyers.in/data/history?symbol=NSE:SBIN-EQ&resolution=30&date_format=1&range_from=2021-01-01&range_to=2021-01-02&cont_flag=1",
 							"protocol": "https",
 							"host": [
-								"api",
+								"api-t1",
 								"fyers",
 								"in"
 							],
 							"path": [
-								"data-rest",
-								"v2",
-								"history",
-								""
+								"data",
+								"history"
 							],
 							"query": [
 								{
@@ -2168,6 +2074,38 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "appId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
