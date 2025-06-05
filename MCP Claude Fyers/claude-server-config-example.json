@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "fyers-mcp-server": {
+      "command": "/opt/homebrew/bin/python3.10",
+      "args": ["/Users/yourusername/Downloads/fyers-api-sample-code/MCP Claude Fyers/mcp_fyers_server.py"],
+      "env": {
+        "APP_CLIENT_ID": "xxxx-100",
+        "APP_SECRET_KEY": "xxx",
+        "APP_REDIRECT_URI": "https://www.google.com",
+        "FYERS_USERNAME": "xxxx",
+        "FYERS_TOTP_KEY": "xxxx",
+        "FYERS_PIN": "xxx"
+      }
+    }
+  }
+}

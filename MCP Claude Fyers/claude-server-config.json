@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "fyers-mcp-server": {
+      "command": "<your_installed_python>",
+      "args": ["<Path_to_your_python_script>"],
+      "env": {
+        "APP_CLIENT_ID": "xxxx-100",
+        "APP_SECRET_KEY": "xxx",
+        "APP_REDIRECT_URI": "https://www.google.com",
+        "FYERS_USERNAME": "xxxx",
+        "FYERS_TOTP_KEY": "xxxx",
+        "FYERS_PIN": "xxx"
+      }
+    }
+  }
+}
