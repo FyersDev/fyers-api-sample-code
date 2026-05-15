@@ -1,2 +1,5 @@
 # Ignore .pyc files
 *.pyc
+
+# Ignore environment files
+.env
